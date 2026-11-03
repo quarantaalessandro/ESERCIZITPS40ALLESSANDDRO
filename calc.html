@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calcolatrice con Lista</title>
+</head>
+<body>
+
+  <h3>Calcolatrice</h3>
+  
+  <input type="text" id="espressione" value="">
+  
+  <!-- Pulsanti per gli operatori -->
+  <button type="button" onclick="aggiungiOperatore('+')">+</button>
+  <button type="button" onclick="aggiungiOperatore('-')">-</button>
+  <button type="button" onclick="aggiungiOperatore('*')">*</button>
+  <button type="button" onclick="aggiungiOperatore('/')">/</button>
+  
+  <br><br>
+  <button type="button" onclick="calcola()">Calcola</button>
+
+  <div id="risultato">Risultato: </div>
+
+  <script>
+    let lista = [];
+
+    function aggiungiOperatore(op) {
+      let input = document.getElementById('espressione');
+      let val = input.value;
+
+      if (val !== '') {
+        lista.push(val);
+        lista.push(op);
+        input.value = '';
+      }
+    }
+
+    function calcola() {
+      let input = document.getElementById('espressione');
+      let val = input.value;
+
+      if (val !== '') {
+        lista.push(val);
+        input.value = '';
+      }
+
+      if (lista.length === 0) return;
+
+      let tot = Number(lista[0]);
+
+      for (let i = 1; i < lista.length; i = i + 2) {
+        let operatore = lista[i];
+        let num = Number(lista[i + 1]);
+
+        if (operatore == '+') {
+          tot = tot + num;
+        }
+        if (operatore == '-') {
+          tot = tot - num;
+        }
+        if (operatore == '*') {
+          tot = tot * num;
+        }
+        if (operatore == '/') {
+          tot = tot / num;
+        }
+      }
+
+      document.getElementById('risultato').textContent = "Risultato: " + tot;
+      
+      // Resetta la lista per i calcoli successivi
+      lista = [];
+    }
+  </script>
+
+</body>
+</html>

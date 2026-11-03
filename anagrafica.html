@@ -1,0 +1,71 @@
+
+<html>
+
+<head>
+  <title>Scheda Anagrafica</title>
+
+  <script type="text/javascript">
+    function controlla() {
+      var nome = document.getElementById("nome").value;
+      var cognome = document.getElementById("cognome").value;
+      var eta = document.getElementById("eta").value;
+      var indirizzo = document.getElementById("indirizzo").value;
+      var sesso = "";
+
+      for (i = 0; i < document.getElementsByName("sesso").length; i++) {
+        if (document.getElementsByName("sesso")[i].checked) {
+          sesso = document.getElementsByName("sesso")[i].value;
+        }
+      }
+
+      document.getElementById("risp").innerHTML = 
+        "<b>Dati Inseriti:</b><br>" +
+        "Nome: " + nome + "<br>" +
+        "Cognome: " + cognome + "<br>" +
+        "Età: " + eta + "<br>" +
+        "Indirizzo: " + indirizzo + "<br>" +
+        "Sesso: " + sesso;
+    }
+  </script>
+</head>
+
+<body>
+
+  <h2>Scheda Anagrafica</h2>
+
+  <table border="1" cellpadding="5">
+    <tr>
+      <td>Nome:</td>
+      <td><input type="text" id="nome"></td>
+    </tr>
+    <tr>
+      <td>Cognome:</td>
+      <td><input type="text" id="cognome"></td>
+    </tr>
+    <tr>
+      <td>Età:</td>
+      <td><input type="number" id="eta"></td>
+    </tr>
+    <tr>
+      <td>Indirizzo:</td>
+      <td><input type="text" id="indirizzo"></td>
+    </tr>
+    <tr>
+      <td>Sesso:</td>
+      <td>
+        <input type="radio" name="sesso" value="Maschio">Maschio
+        <input type="radio" name="sesso" value="Femmina">Femmina
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <input type="button" onclick="controlla();" value="Invia">
+      </td>
+    </tr>
+  </table>
+
+  <p id="risp"></p>
+
+</body>
+
+</html>
